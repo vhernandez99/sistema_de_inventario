@@ -1,11 +1,10 @@
-import React from "react";
 import useGetUserInfo from "../../Hooks/useGetUserInfo";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Sidebar from "../../components/Sidebar";
 import moment from "moment";
-function Index() {
+function index() {
   const { jwt } = useGetUserInfo();
   const [registrosArray, setRegistrosArray] = useState([]);
   const router = useRouter();
@@ -95,4 +94,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default index;
