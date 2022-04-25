@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import moment from "moment";
-export default function edit() {
+export default function Edit() {
   const router = useRouter();
   const id = Number(router.query.id);
   const { jwt } = useGetUserInfo();
