@@ -4,41 +4,40 @@ import useGetUserInfo from "../../Hooks/useGetUserInfo";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 import SideBar from "../../components/Sidebar";
-function NuevoProducto(props) {
+function NuevoInventario(props) {
   const router = useRouter();
   const { jwt } = useGetUserInfo();
-  const [nuevoProducto, setNuevoProducto] = useState();
-
+  const [nuevoInventario, setNuevoInventario] = useState();
+  const [productos, setProductos] = useState([]);
   function onSubmit(e) {
     e.preventDefault();
     let formDataToSend = {
       data: {
-        Name: nuevoProducto.Name,
-        Code: nuevoProducto.Code,
-        Quantity: nuevoProducto.Quantity,
+        Quantity: nuevoInventario.Quantity,
+        product: nuevoInventario.product,
       },
     };
     console.log(formDataToSend);
     axios
-      .post(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, formDataToSend, {
+      .post(`${process.env.NEXT_PUBLIC_API_URL}/api/Stocks`, formDataToSend, {
         headers: {
           Authorization: `Bearer ${jwt}`,
         },
       })
       .then((res) => {
         Swal.fire({
-          title: "Producto creado correctamente",
+          title: "Inventario creado correctamente",
           color: "white",
           icon: "success",
           iconColor: "#9DC230",
           background: "#232130",
           confirmButtonColor: "#9DC230",
         });
-        router.push("/productos");
+        router.push("/inventario");
       })
       .catch((error) => {
         Swal.fire({
-          title: "Error al crear producto",
+          title: "Error al crear inventario",
           color: "white",
           icon: "error",
           background: "#232130",
@@ -47,6 +46,27 @@ function NuevoProducto(props) {
       });
   }
 
+  const obtenerInventario = async () => {
+    if (jwt) {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/products`,
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      );
+      console.log(res);
+      const productos = await res.json();
+      console.log(productos.data);
+      setProductos(productos.data);
+    }
+  };
+
+  useEffect(() => {
+    obtenerInventario();
+  }, [jwt]);
+
   return (
     <>
       <SideBar>
@@ -54,29 +74,38 @@ function NuevoProducto(props) {
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="w-full flex flex-col space-y-6 mx-auto max-w-7xl">
               <div className="grid grid-cols-4 gap-x-2 gap-y-4">
-                <input
+                <select
                   className="Input col-span-2"
                   placeholder="Nombre"
                   required
                   onChange={(e) => {
                     {
-                      setNuevoProducto({
-                        ...nuevoProducto,
-                        Name: e.target.value,
+                      setNuevoInventario({
+                        ...nuevoInventario,
+                        product: Number(e.target.value),
                       });
+                      console.log(e.target.value)
                     }
                   }}
-                />
+                >
+                  <option value="">Selecciona un producto</option>
+                  {productos.map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {item.attributes.Name}
+                    </option>
+                  ))}
+                </select>
 
                 <input
                   className="Input col-span-2"
-                  placeholder="Codigo"
+                  placeholder="Cantidad"
                   required
+                  type="number"
                   onChange={(e) => {
                     {
-                      setNuevoProducto({
-                        ...nuevoProducto,
-                        Code: e.target.value,
+                      setNuevoInventario({
+                        ...nuevoInventario,
+                        Quantity: Number(e.target.value),
                       });
                     }
                   }}
@@ -93,4 +122,4 @@ function NuevoProducto(props) {
   );
 }
 
-export default NuevoProducto;
+export default NuevoInventario;

@@ -24,7 +24,11 @@ const SideBar = (props) => {
             <Link href="/inventario" passHref>
               <div
                 className={`flex items-center justify-center ${
-                  router.pathname === "/inventario" ? "bg-mainColor-150" : ""
+                  router.pathname === "/inventario"
+                    ? "bg-mainColor-150"
+                    : router.pathname === "/inventario/[id]"
+                    ? "bg-mainColor-150"
+                    : ""
                 }  w-3/4 space-x-2  mx-auto rounded-xl p-3 cursor-pointer`}
               >
                 {/* <Image
@@ -38,11 +42,30 @@ const SideBar = (props) => {
                 </h1>
               </div>
             </Link>
+            <Link href="/inventario/nuevo" passHref>
+              <div
+                className={`flex items-center justify-center ${
+                  router.pathname === "/inventario/nuevo"
+                    ? "bg-mainColor-150"
+                    : ""
+                }  w-3/4 space-x-2  mx-auto rounded-xl p-3 cursor-pointer`}
+              >
+                {/* <Image
+                  src="/assets/dashboard.png"
+                  width={24}
+                  height={24}
+                  alt="dashboard"
+                /> */}
+                <h1 className="m-0 tracking-wider w-20 text-white">
+                  Nuevo Inventario
+                </h1>
+              </div>
+            </Link>
 
             <Link href="/productos" passHref>
               <div
                 className={`flex items-center justify-center ${
-                  router.pathname.includes("/closers") ? "bg-mainColor-150" : ""
+                  router.pathname === "/productos" ? "bg-mainColor-150" : ""
                 } space-x-2 w-3/4 mx-auto rounded-xl p-3 cursor-pointer`}
               >
                 <h1 className="m-0 tracking-wider w-20 text-white">
@@ -53,7 +76,9 @@ const SideBar = (props) => {
             <Link href="/productos/nuevo" passHref>
               <div
                 className={`flex items-center justify-center ${
-                  router.pathname.includes("/closers") ? "bg-mainColor-150" : ""
+                  router.pathname === "/productos/nuevo"
+                    ? "bg-mainColor-150"
+                    : ""
                 } space-x-2 w-3/4 mx-auto rounded-xl p-3 cursor-pointer`}
               >
                 <h1 className="m-0 tracking-wider w-20 text-white">
@@ -64,7 +89,9 @@ const SideBar = (props) => {
             <Link href="/registros" passHref>
               <div
                 className={`flex items-center justify-center ${
-                  router.pathname.includes("/closers") ? "bg-mainColor-150" : ""
+                  router.pathname.includes("/registros")
+                    ? "bg-mainColor-150"
+                    : ""
                 } space-x-2 w-3/4 mx-auto rounded-xl p-3 cursor-pointer`}
               >
                 <h1 className="m-0 tracking-wider w-20 text-white">
@@ -92,7 +119,7 @@ const SideBar = (props) => {
           </div>
         </div>
       </div>
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden bg-mainColor-150">
         <div className="flex-1 overflow-y-scroll p-4">{props.children}</div>
       </div>
     </div>
