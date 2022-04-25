@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "registers",
+  "info": {
+    "singularName": "register",
+    "pluralName": "registers",
+    "displayName": "Register",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Quantity": {
+      "type": "integer"
+    },
+    "Movement": {
+      "type": "enumeration",
+      "enum": [
+        "Agregar",
+        "Retirar"
+      ]
+    },
+    "stock": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::stock.stock",
+      "inversedBy": "registers"
+    },
+    "fecha_movimiento": {
+      "type": "datetime"
+    }
+  }
+}
