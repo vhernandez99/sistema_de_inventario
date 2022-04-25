@@ -3,7 +3,6 @@ import useGetUserInfo from "../../Hooks/useGetUserInfo";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Swal from "sweetalert2";
 import Sidebar from "../../components/Sidebar";
 import moment from "moment";
 function Index() {
@@ -75,11 +74,11 @@ function Index() {
                   </h1>
                   <div className="w-2/12 flex flex-col xl:flex xl:flex-row xl:space-x-4 justify-around items-center space-y-2 xl:space-y-0 text-white lg:pr-4 pr-0">
                     <Link href={`/registros/${item.attributes.stock.data.id}`} passHref>
-                      <a className="bg-mainColor-300 w-full xl:w-1/2 h-8 rounded-xl tracking-wider flex items-center justify-center">
+                      <button className="bg-mainColor-300 w-full xl:w-1/2 h-8 rounded-xl tracking-wider flex items-center justify-center">
                         Detalles
-                      </a>
+                      </button>
                     </Link>
-
+                      {console.log(item.attributes.stock.data.id)}
                     {/* <Link href={`/closers/${item.id}`} passHref>
                       <button className="bg-mainColor-150 w-full xl:w-1/2 h-8 rounded-xl tracking-wider">
                         Edit
