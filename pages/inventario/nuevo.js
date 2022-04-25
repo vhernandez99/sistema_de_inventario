@@ -89,7 +89,7 @@ function NuevoInventario(props) {
                   }}
                 >
                   <option value="">Selecciona un producto</option>
-                  {productos.map((item) => (
+                  {productos?.map((item) => (
                     <option key={item.id} value={item.id}>
                       {item.attributes.Name}
                     </option>
