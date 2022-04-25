@@ -1,7 +1,6 @@
 import React from "react";
 import useGetUserInfo from "../../Hooks/useGetUserInfo";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import Swal from "sweetalert2";
 import Sidebar from "../../components/Sidebar";
