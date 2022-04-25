@@ -4,10 +4,9 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Sidebar from "../../components/Sidebar";
 import moment from "moment";
-function index() {
+function Index() {
   const { jwt } = useGetUserInfo();
   const [registrosArray, setRegistrosArray] = useState([]);
-  const router = useRouter();
   useEffect(() => {
     obtenerRegistros();
   }, [jwt]);
@@ -94,4 +93,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;
