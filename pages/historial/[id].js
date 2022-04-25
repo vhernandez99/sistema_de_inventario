@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import SideBar from "../../components/Sidebar";
 import { useState, useEffect } from "react";
 import useGetUserInfo from "../../Hooks/useGetUserInfo";
-function registro() {
+function Registro() {
   const router = useRouter();
  
   const { jwt } = useGetUserInfo();
@@ -66,4 +66,4 @@ function registro() {
     </SideBar>
   );
 }
-export default registro;
+export default Registro;
