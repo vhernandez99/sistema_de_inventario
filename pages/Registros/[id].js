@@ -5,13 +5,13 @@ import { useState, useEffect } from "react";
 import useGetUserInfo from "../../Hooks/useGetUserInfo";
 function Registro() {
   const router = useRouter();
-  const id = Number(router.query.id);
+ 
   const { jwt } = useGetUserInfo();
   const [inventario, setInventario] = useState();
   const obtenerInventario = async () => {
-    if (jwt && id) {
+    if (jwt && router.query.id) {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/stocks/${id}?populate[0]=product`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/stocks/${router.query.id}?populate[0]=product`,
         {
           headers: {
             Authorization: `Bearer ${jwt}`,
@@ -27,7 +27,7 @@ function Registro() {
 
   useEffect(() => {
     obtenerInventario();
-  }, [jwt, id]);
+  }, [jwt, router.query.id]);
   return (
     <SideBar>
       <div className="mt-24 h-screen">
