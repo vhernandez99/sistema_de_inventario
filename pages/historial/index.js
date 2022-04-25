@@ -41,9 +41,9 @@ function Index() {
             </h1>
             <h1 className="text-white w-2/12 m-0 hidden md:block">Cantidad</h1>
             <h1 className="text-white w-2/12 m-0 hidden md:block">
-              Inventario
+              Fecha
             </h1>
-            <h1 className="text-white w-2/12 m-0 text-center">Actions</h1>
+            <h1 className="text-white w-2/12 m-0 text-center">Acciones</h1>
           </div>
           <div className="space-y-2 flex flex-col w-full mt-8">
             {registrosArray?.map((item, i) => {
@@ -65,13 +65,13 @@ function Index() {
                     {item.attributes.Quantity}
                   </h1>
 
-                  <h1 className="m-0 w-2/12 text-mainColor-400 pl-4">
+                  <h1 className="m-0 w-2/12 text-mainColor-400">
                     {moment(item.attributes.fecha_movimiento).format(
                       "DD/MM/yyyy HH:mm:ss"
                     )}
                   </h1>
                   <div className="w-2/12 flex flex-col xl:flex xl:flex-row xl:space-x-4 justify-around items-center space-y-2 xl:space-y-0 text-white lg:pr-4 pr-0">
-                    <Link href={`/registros/${item.attributes.stock.data.id}`} passHref>
+                    <Link href={`/historial/${item.attributes.stock.data.id}`} passHref>
                       <button className="bg-mainColor-300 w-full xl:w-1/2 h-8 rounded-xl tracking-wider flex items-center justify-center">
                         Detalles
                       </button>

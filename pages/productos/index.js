@@ -44,7 +44,7 @@ function Index() {
             <h1 className="text-white w-2/12 m-0">Id</h1>
             <h1 className="text-white w-2/12 m-0">Nombre</h1>
             <h1 className="text-white w-2/12 m-0 hidden md:block">Codigo</h1>
-            <h1 className="text-white w-2/12 m-0 text-center">Actions</h1>
+            <h1 className="text-white w-2/12 m-0 text-center">Acciones</h1>
           </div>
           <div className="space-y-2 flex flex-col w-full mt-8">
             {productosArray?.map((item, i) => {
@@ -83,7 +83,7 @@ function Index() {
                         });
                       }}
                     >
-                      Delete
+                      Borrar
                     </button>
 
                     {/* <Link href={`/closers/${item.id}`} passHref>
