@@ -6,7 +6,6 @@ import useGetUserInfo from "../Hooks/useGetUserInfo";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-
 const SideBar = (props) => {
   const router = useRouter();
   const { roleId } = useGetUserInfo();
@@ -91,19 +90,21 @@ const SideBar = (props) => {
                 </h1>
               </div>
             </Link>
-            <Link href="/historial" passHref>
-              <div
-                className={`flex items-center justify-center ${
-                  router.pathname.includes("/historial")
-                    ? "bg-mainColor-150"
-                    : ""
-                } space-x-2 w-3/4 mx-auto rounded-xl p-3 cursor-pointer`}
-              >
-                <h1 className="m-0 tracking-wider w-20 text-white">
-                  Historial
-                </h1>
-              </div>
-            </Link>
+            {roleId === 3 && (
+              <Link href="/historial" passHref>
+                <div
+                  className={`flex items-center justify-center ${
+                    router.pathname.includes("/historial")
+                      ? "bg-mainColor-150"
+                      : ""
+                  } space-x-2 w-3/4 mx-auto rounded-xl p-3 cursor-pointer`}
+                >
+                  <h1 className="m-0 tracking-wider w-20 text-white">
+                    Historial
+                  </h1>
+                </div>
+              </Link>
+            )}
           </ul>
           <div
             className="flex items-center justify-center w-3/4 space-x-2 mx-auto rounded-xl p-3 cursor-pointer"
@@ -232,6 +233,9 @@ const SideBar = (props) => {
                 });
 
                 destroyCookie({}, "userId", {
+                  path: "/",
+                });
+                destroyCookie({}, "roleId", {
                   path: "/",
                 });
                 router.push("/");

@@ -46,6 +46,10 @@ const Index = () => {
         maxAge: 30 * 24 * 60 * 60,
         path: "/",
       });
+      setCookie(null, "roleId", loginResponse.user.role.id, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: "/",
+      });
     } catch (error) {
       console.log(error)
     }
