@@ -56,7 +56,7 @@ function Index() {
                     {item.id}
                   </h1>
                   <h1 className="m-0 w-2/12 text-mainColor-400 pl-4">
-                    {item.attributes.stock.data.id}
+                    {item.attributes.stock.data?.id}
                   </h1>
                   <h1 className="m-0 w-2/12 text-mainColor-400 pl-4">
                     {item.attributes.Movement}
@@ -71,12 +71,12 @@ function Index() {
                     )}
                   </h1>
                   <div className="w-2/12 flex flex-col xl:flex xl:flex-row xl:space-x-4 justify-around items-center space-y-2 xl:space-y-0 text-white lg:pr-4 pr-0">
-                    <Link href={`/historial/${item.attributes.stock.data.id}`} passHref>
+                    <Link href={`/historial/${item.attributes.stock.data?.id}`} passHref>
                       <button className="bg-mainColor-300 w-full xl:w-1/2 h-8 rounded-xl tracking-wider flex items-center justify-center">
                         Detalles
                       </button>
                     </Link>
-                      {console.log(item.attributes.stock.data.id)}
+                     
                     {/* <Link href={`/closers/${item.id}`} passHref>
                       <button className="bg-mainColor-150 w-full xl:w-1/2 h-8 rounded-xl tracking-wider">
                         Edit
