@@ -46,25 +46,27 @@ const SideBar = (props) => {
                 </h1>
               </div>
             </Link>
-            <Link href="/inventario/nuevo" passHref>
-              <div
-                className={`flex items-center justify-center ${
-                  router.pathname === "/inventario/nuevo"
-                    ? "bg-mainColor-150"
-                    : ""
-                }  w-3/4 space-x-2  mx-auto rounded-xl p-3 cursor-pointer`}
-              >
-                {/* <Image
+            {roleId === 3 && (
+              <Link href="/inventario/nuevo" passHref>
+                <div
+                  className={`flex items-center justify-center ${
+                    router.pathname === "/inventario/nuevo"
+                      ? "bg-mainColor-150"
+                      : ""
+                  }  w-3/4 space-x-2  mx-auto rounded-xl p-3 cursor-pointer`}
+                >
+                  {/* <Image
                   src="/assets/dashboard.png"
                   width={24}
                   height={24}
                   alt="dashboard"
                 /> */}
-                <h1 className="m-0 tracking-wider w-20 text-white">
-                  Nuevo Inventario
-                </h1>
-              </div>
-            </Link>
+                  <h1 className="m-0 tracking-wider w-20 text-white">
+                    Nuevo Inventario
+                  </h1>
+                </div>
+              </Link>
+            )}
 
             <Link href="/productos" passHref>
               <div
